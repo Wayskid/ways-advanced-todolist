@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import ListContainer from "./components/ListContainer";
+import Form from "./components/Form";
+import uuid from "react-uuid"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const [listArray, setListArray] = useState([]);
+    const [inputVal, setInputVal] = useState("");
+
+    function handleTaskTyping(e) {
+      setInputVal(e.target.value);
+    }
+
+    function handleTaskSubmit(e) {
+      e.preventDefault()
+
+      if(inputVal.trim()){
+        setListArray(prevList=>{
+          return [
+            ...prevList,
+            {
+              id: uuid(),
+              text: inputVal,
+              completed: false
+            }
+          ]
+        })
+      }
+
+      setInputVal("")
+    }
+
+    
+
+    
+
+    
+
+    return (
+        <div className="containerBody">
+            <Form 
+              handleTaskTyping={handleTaskTyping}
+              inputVal={inputVal}
+              handleTaskSubmit={handleTaskSubmit}
+            />
+
+            <ListContainer 
+              listArray={listArray}
+              setListArray={setListArray}
+              setInputVal={setInputVal}
+            />
+            
+        </div>
+    );
 }
-
-export default App;
