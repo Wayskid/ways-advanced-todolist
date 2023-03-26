@@ -32,18 +32,58 @@ export const TodoProvider = ({ children }) => {
     setInputVal("");
   }
 
-  //Local Storage
-  useEffect(()=>{
-    localStorage.setItem("taskList", JSON.stringify(listArray))
-  },[listArray])
+  //State for the select filter button
+  const [selectVal, setSelectVal] = useState("all");
 
-  useEffect(()=>{
-    if (localStorage.getItem("tasksList") === null) {
-      localStorage.setItem("taskList", JSON.stringify([]))
+  function handleSelect(e) {
+    setSelectVal(e.target.value);
+  }
+
+  //State to hold filtered tasks
+  const [filteredArray, setFilteredArray] = useState([]);
+
+  //Run filtering on new tasks and filter selection
+  const filterList = () => {
+    if (selectVal === "Completed") {
+      setFilteredArray(
+        listArray.filter((el) => {
+          return el.completed === true;
+        })
+      );
+    } else if (selectVal === "Not Completed") {
+      setFilteredArray(
+        listArray.filter((el) => {
+          return el.completed === false;
+        })
+      );
     } else {
-      setListArray(JSON.parse(localStorage.getItem("taskList")))
+      setFilteredArray(listArray);
     }
-  },[])
+  };
+
+  //UseEffects
+  useEffect(() => {
+    getList();
+  }, []);
+
+  useEffect(() => {
+    setList();
+    filterList();
+  }, [listArray, selectVal]);
+
+  //Local Storage
+  const setList = () => {
+    localStorage.setItem("taskList", JSON.stringify(listArray));
+  };
+
+  const getList = () => {
+    if (localStorage.getItem("taskList") == null) {
+      localStorage.setItem("taskList", JSON.stringify([]));
+    } else {
+      let listLocal = JSON.parse(localStorage.getItem("taskList"));
+      setListArray(listLocal)
+    }
+  };
 
   return (
     <todoContext.Provider
@@ -54,6 +94,9 @@ export const TodoProvider = ({ children }) => {
         listArray,
         setListArray,
         setInputVal,
+        handleSelect,
+        filteredArray,
+        selectVal,
       }}
     >
       {children}

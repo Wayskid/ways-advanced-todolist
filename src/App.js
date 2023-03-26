@@ -9,7 +9,7 @@ export default function App() {
       <TodoProvider>
         <div className="grid gap-2 w-containerWidth">
             <Form />
-            <ListContainer />          
+            <ListContainer />  
         </div>
       </TodoProvider>
     );

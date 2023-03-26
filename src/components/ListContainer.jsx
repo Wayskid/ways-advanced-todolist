@@ -1,46 +1,13 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import todoContext from "../context/todoContext"
 import List from "./List"
 export default function ListContainer() {
 
     //Use Context
-    const { listArray } = useContext(todoContext)
-
-    //State for the select filter button
-    const [ selectVal, setSelectVal ] = useState("")
-    
-    function handleSelect(e) {
-        setSelectVal(e.target.value);
-    }
-
-    //State to hold filtered tasks
-    const [ taskStatusArray, setTaskStatusArray ] = useState([])    
-
-
-    //Run filtering on new tasks and filter selection
-    useEffect(()=>{
-        if (selectVal === "Completed") {
-            setTaskStatusArray(
-                listArray.filter(el=>{
-                    return el.completed === true
-                })
-            )
-        }
-        else if (selectVal === "Not Completed") {
-            setTaskStatusArray(
-                listArray.filter(el=>{
-                    return el.completed === false
-                })
-            )
-        }
-        else {
-            setTaskStatusArray(listArray)
-        }
-    }, [selectVal, listArray])
-
+    const { handleSelect, filteredArray, selectVal } = useContext(todoContext)
 
     //Map List
-    const listMapped = taskStatusArray.map(item=>{
+    const listMapped = filteredArray.map(item=>{
         return <List
                     key= {item.id}
                     item={item}
