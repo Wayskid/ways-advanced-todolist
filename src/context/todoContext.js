@@ -60,16 +60,16 @@ export const TodoProvider = ({ children }) => {
       setFilteredArray(listArray);
     }
   };
+  
+  //Local Storage
+  const setList = () => {
+    localStorage.setItem("taskList", JSON.stringify(listArray));
+  };
 
   useEffect(() => {
     setList();
     filterList();
   }, [listArray, selectVal]);
-
-  //Local Storage
-  const setList = () => {
-    localStorage.setItem("taskList", JSON.stringify(listArray));
-  };
 
   return (
     <todoContext.Provider

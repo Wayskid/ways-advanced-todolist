@@ -11,5 +11,6 @@
 - Delete Task
 - Mark Task as complete
 - Filter List to show completed and not completed tasks
+- Tasks are saved to local storage.
 
 ### webiste https://ways-todo-app.netlify.app
