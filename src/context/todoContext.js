@@ -6,7 +6,7 @@ const todoContext = createContext();
 export const TodoProvider = ({ children }) => {
 
   //Task Input
-  const [listArray, setListArray] = useState([]);
+  const [listArray, setListArray] = useState(JSON.parse(localStorage.getItem("taskList")) || []);
   const [inputVal, setInputVal] = useState("");
 
   function handleTaskTyping(e) {
@@ -61,11 +61,6 @@ export const TodoProvider = ({ children }) => {
     }
   };
 
-  //UseEffects
-  useEffect(() => {
-    getList();
-  }, []);
-
   useEffect(() => {
     setList();
     filterList();
@@ -74,15 +69,6 @@ export const TodoProvider = ({ children }) => {
   //Local Storage
   const setList = () => {
     localStorage.setItem("taskList", JSON.stringify(listArray));
-  };
-
-  const getList = () => {
-    if (localStorage.getItem("taskList") == null) {
-      localStorage.setItem("taskList", JSON.stringify([]));
-    } else {
-      let listLocal = JSON.parse(localStorage.getItem("taskList"));
-      setListArray(listLocal)
-    }
   };
 
   return (
