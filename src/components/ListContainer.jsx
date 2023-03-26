@@ -1,17 +1,24 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import todoContext from "../context/todoContext"
 import List from "./List"
-export default function ListContainer({ listArray, handleChecked, setListArray, setInputVal}) {
+export default function ListContainer() {
 
+    //Use Context
+    const { listArray } = useContext(todoContext)
+
+    //State for the select filter button
     const [ selectVal, setSelectVal ] = useState("")
-    const [ taskStatusArray, setTaskStatusArray ] = useState([])
-
     
-
     function handleSelect(e) {
         setSelectVal(e.target.value);
     }
 
-    function filterOnSelect() {
+    //State to hold filtered tasks
+    const [ taskStatusArray, setTaskStatusArray ] = useState([])    
+
+
+    //Run filtering on new tasks and filter selection
+    useEffect(()=>{
         if (selectVal === "Completed") {
             setTaskStatusArray(
                 listArray.filter(el=>{
@@ -29,30 +36,23 @@ export default function ListContainer({ listArray, handleChecked, setListArray, 
         else {
             setTaskStatusArray(listArray)
         }
-    }
-
-    
-
-    useEffect(()=>{filterOnSelect()}, [selectVal, listArray])
+    }, [selectVal, listArray])
 
 
+    //Map List
     const listMapped = taskStatusArray.map(item=>{
         return <List
                     key= {item.id}
-                    listArray={listArray}
-                    handleChecked={handleChecked}
-                    setListArray={setListArray}
                     item={item}
-                    text={item.text}
-                    setInputVal={setInputVal}
                 />
     })
 
     return (
-            <div className="listHeaderCont">
-                <div className="header">
-                    <h1 className="listHeader">My Tasks</h1>
+            <div className="listHeaderContainer grid gap-2 ">
+                <div className="header flex justify-between">
+                    <h1 className=" listHeader text-clr-neutral-100 text-2xl">My Tasks</h1>
                     <select
+                        className="select select-sm"
                         name="taskStatus" 
                         onChange={handleSelect}
                     >
@@ -61,7 +61,7 @@ export default function ListContainer({ listArray, handleChecked, setListArray, 
                         <option value="Not Completed">Not completed</option>
                     </select>
                 </div>
-                    <ul className="listCont"> {listMapped.length ? listMapped : <h1>ToDo List is Currently Empty. Kindly add a Task</h1>} </ul>
+                    <ul className="listContainer grid gap-2 relative h-40 content-baseline"> {listMapped.length ? listMapped : <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl text-center">{selectVal==="Completed"&&"Completed"} ToDo List is currently empty. Kindly {selectVal==="Completed" ? "complete" : "add"} a Task</h1>}</ul>
             </div>
     )  
 }

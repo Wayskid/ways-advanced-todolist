@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap');
 
 :root{
@@ -10,17 +14,6 @@
   --clr-neutral-900: #000000;
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-family: inherit;
-}
-
-*,*::after,*::before{
-  box-sizing: border-box;
-}
-
 body{
   background-color: var(--clr-primary-700);
   font-family: 'Josefin Sans', sans-serif;
@@ -30,111 +23,20 @@ body{
   display: grid;
   justify-items: center;
   padding-block: 5rem;
-}
-
-.containerBody{
-  display: grid;
-  gap: 2rem;
-  width: min(600px, 95%);
-}
-
-form{
-  background-color: var(--clr-primary-600);
-  padding-block: 2.5rem;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-}
-
-.inputCont{
-  border: 1px solid var(--clr-primary-700);
-  padding: 0.4rem;
-  border-radius: 5px;
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.taskInput{
-  background-color: var(--clr-primary-600);
-  border: none;
-  font-size: 18px;
-  width: 80%;
-  color: var(--clr-neutral-100);
-}
-
-.taskInput:focus{
-  outline: none;
-}
-
-.submitTask{
-  padding: 0.4rem 1rem;
-  border-radius: 0px;
-  border: none;
-  cursor: pointer;
+  min-height: 100vh;
+  align-content: baseline;
 }
 
 .submitTask:enabled{
   background-color: var(--clr-primary-700);
   color: var(--clr-neutral-100);
+  transition: all 0.5s ease-in;
 }
 
-.listHeaderCont{
-  display: grid;
-  gap: 2rem;
-}
-
-.header{
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-}
-
-.listHeader{
-  color: var(--clr-primary-400);
-}
-
-.listCont{
-  display: grid;
-  gap: 0.7rem;
-}
-
-.list{
-  font-size: 18px;
-  padding: 0.6rem 0.5rem;
-  background-color: var(--clr-primary-600);
-  border-radius: 5px;
-  color: var(--clr-neutral-100);
-  display: flex;
-  align-items: center;
-  gap: 0.1rem;
-}
-
-.liText{
-  margin-right: auto;
-}
-
-.iconEdit, .iconDelete, .iconComplete{
-  padding-inline: 0.2rem;
-  font-size: 17px;
-  cursor: pointer;
-  /* color: green; */
-}
 
 .iconEdit:hover, .iconDelete:hover, .iconComplete:hover{
   scale: 1.4;
   transition: all 0.3s;
-}
-
-.listCont h1{
-  color: rgb(68, 68, 68);
-  text-align: center;
-  margin-top: 3rem;
-  width: 70%;
-  display: block;
-  margin-inline: auto;
-  line-height: 1.6em;
 }
 
 .completedStyle{
@@ -144,5 +46,4 @@ form{
 
 .completedListStyle{
   background-color: #c43c4c;
-}
-
+} 
