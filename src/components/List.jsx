@@ -62,28 +62,23 @@ export default function List({item}) {
       >
         {item.text}
       </p>
-      <div className="tooltip" data-tip="Complete">
-        <FontAwesomeIcon
-          icon={faCheckSquare}
-          className="iconComplete  group-hover:inline pl-2 hidden"
-          onClick={handleChecked}
-          style={item.completed === true && {color: "green"}}
-        />
-      </div>
-      <div className="tooltip cursor-pointer" data-tip="Edit">
-        <FontAwesomeIcon
-          icon={faEdit}
-          className="iconEdit  group-hover:inline hidden"
-          onClick={handleEdit}
-        />
-      </div>
-      <div className="tooltip cursor-pointer" data-tip="Delete">
-        <FontAwesomeIcon
-          icon={faTrashCan}
-          className="iconDelete  group-hover:inline hidden"
-          onClick={handleDelete}
-        />
-      </div>
+      
+      <FontAwesomeIcon
+        icon={faCheckSquare}
+        className="iconComplete  group-hover:inline pl-2 hidden"
+        onClick={handleChecked}
+        style={item.completed === true && {color: "green"}}
+      />
+      <FontAwesomeIcon
+        icon={faEdit}
+        className="iconEdit  group-hover:inline hidden"
+        onClick={handleEdit}
+      />
+      <FontAwesomeIcon
+        icon={faTrashCan}
+        className="iconDelete  group-hover:inline hidden"
+        onClick={handleDelete}
+      />
     </li>
   );
 }
