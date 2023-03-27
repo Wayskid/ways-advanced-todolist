@@ -15,7 +15,7 @@ export default function ListContainer() {
     })
 
     return (
-            <div className="listHeaderContainer grid gap-2 ">
+            <div className="listHeaderContainer grid gap-2">
                 <div className="header flex justify-between">
                     <h1 className=" listHeader text-clr-neutral-100 text-2xl">My Tasks</h1>
                     <select
@@ -28,7 +28,7 @@ export default function ListContainer() {
                         <option value="Not Completed">Not completed</option>
                     </select>
                 </div>
-                    <ul className="listContainer grid gap-2 relative h-40 content-baseline"> {listMapped.length ? listMapped : <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl text-center">{selectVal==="Completed"&&"Completed"} ToDo List is currently empty. Kindly {selectVal==="Completed" ? "complete" : "add"} a Task</h1>}</ul>
+                    <ul className="listContainer grid gap-2 relative content-baseline"> {listMapped.length ? listMapped : <li className="mt-8 w-3/5 justify-self-center text-2xl text-center">{selectVal==="Completed"&&"Completed"} ToDo List is currently empty. Kindly {selectVal==="Completed" ? "complete" : "add"} a Task</li>}</ul>
             </div>
     )  
 }

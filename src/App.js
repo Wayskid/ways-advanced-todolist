@@ -7,7 +7,7 @@ export default function App() {
 
     return (
       <TodoProvider>
-        <div className="grid gap-2 w-containerWidth">
+        <div className="grid gap-2 w-containerWidth grid content-baseline">
             <Form />
             <ListContainer />  
         </div>

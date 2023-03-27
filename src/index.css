@@ -17,14 +17,13 @@
 body{
   background-color: var(--clr-primary-700);
   font-family: 'Josefin Sans', sans-serif;
+  min-height: 100vh;
 }
 
 #root{
   display: grid;
   justify-items: center;
-  padding-block: 5rem;
-  min-height: 100vh;
-  align-content: baseline;
+  padding-block: 3rem;
 }
 
 .submitTask:enabled{

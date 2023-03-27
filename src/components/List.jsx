@@ -52,19 +52,20 @@ export default function List({item}) {
     <li
       className={`list ${
         item.completed === true && "completedListStyle"
-      } text-md p-[0.4rem_0.5rem] flex bg-clr-primary-600 rounded-[5px] items-center gap-[0.5rem] text-clr-neutral-100 group`}
+      } flex bg-clr-primary-600 p-[0.4rem_0.5rem] text-md bg-clr-primary-600 rounded-[5px] items-center gap-[0.5rem] text-clr-neutral-100 group overflow-x-hidden`}
+      // 
     >
       <p
         className={`liText ${
           item.completed === true && "completedStyle"
-        } mr-auto break-all text-lg`}
+        } break-all text-lg mr-auto`}
       >
         {item.text}
       </p>
-      <div className="tooltip cursor-pointer" data-tip="Mark Completed">
+      <div className="tooltip" data-tip="Complete">
         <FontAwesomeIcon
           icon={faCheckSquare}
-          className="iconComplete hidden group-hover:inline pl-2"
+          className="iconComplete  group-hover:inline pl-2 hidden"
           onClick={handleChecked}
           style={item.completed === true && {color: "green"}}
         />
@@ -72,14 +73,14 @@ export default function List({item}) {
       <div className="tooltip cursor-pointer" data-tip="Edit">
         <FontAwesomeIcon
           icon={faEdit}
-          className="iconEdit hidden group-hover:inline"
+          className="iconEdit  group-hover:inline hidden"
           onClick={handleEdit}
         />
       </div>
       <div className="tooltip cursor-pointer" data-tip="Delete">
         <FontAwesomeIcon
           icon={faTrashCan}
-          className="iconDelete hidden group-hover:inline"
+          className="iconDelete  group-hover:inline hidden"
           onClick={handleDelete}
         />
       </div>
