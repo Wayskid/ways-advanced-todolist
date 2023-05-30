@@ -28,7 +28,7 @@ export default function ListContainer() {
         {listMapped.length ? (
           listMapped
         ) : (
-          <li className="mt-8 w-3/5 justify-self-center text-2xl text-center">
+          <li className="mt-8 w-3/5 justify-self-center text-2xl text-center text-slate-300">
             {selectVal === "Completed" && "Completed"} ToDo List is currently
             empty. Kindly {selectVal === "Completed" ? "complete" : "add"} a
             Task
