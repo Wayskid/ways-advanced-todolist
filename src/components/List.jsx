@@ -52,31 +52,30 @@ export default function List({item}) {
     <li
       className={`list ${
         item.completed === true && "completedListStyle"
-      } flex bg-clr-primary-600 p-[0.4rem_0.5rem] text-md bg-clr-primary-600 rounded-[5px] items-center gap-[0.5rem] text-clr-neutral-100 group overflow-x-hidden`}
-      // 
+      } flex bg-clr-primary-600 p-[0.6rem_0.5rem] rounded-[5px] items-center gap-[0.5rem] text-clr-neutral-100 group overflow-x-hidden h-max`}
     >
       <p
         className={`liText ${
           item.completed === true && "completedStyle"
-        } break-all text-lg mr-auto`}
+        } break-all text-xl mr-auto`}
       >
         {item.text}
       </p>
       
       <FontAwesomeIcon
         icon={faCheckSquare}
-        className="iconComplete  group-hover:inline pl-2 hidden"
+        className="iconComplete group-hover:inline pl-2 hidden text-[25px] cursor-pointer"
         onClick={handleChecked}
         style={item.completed === true && {color: "green"}}
       />
       <FontAwesomeIcon
         icon={faEdit}
-        className="iconEdit  group-hover:inline hidden"
+        className="iconEdit group-hover:inline hidden text-[25px] cursor-pointer"
         onClick={handleEdit}
       />
       <FontAwesomeIcon
         icon={faTrashCan}
-        className="iconDelete  group-hover:inline hidden"
+        className="iconDelete group-hover:inline hidden text-[25px] cursor-pointer"
         onClick={handleDelete}
       />
     </li>

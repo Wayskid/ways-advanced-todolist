@@ -14,16 +14,21 @@
   --clr-neutral-900: #000000;
 }
 
+html{
+  height: 100%;
+}
+
 body{
   background-color: var(--clr-primary-700);
   font-family: 'Josefin Sans', sans-serif;
-  min-height: 100vh;
+  height: 100%;
 }
 
 #root{
   display: grid;
   justify-items: center;
-  padding-block: 3rem;
+  height: 100%;
+  align-items: center;
 }
 
 .submitTask:enabled{
